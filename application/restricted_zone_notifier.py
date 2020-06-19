@@ -44,10 +44,8 @@ MyStruct = namedtuple("assemblyinfo", "safe")
 INFO = MyStruct(True)
 
 # MQTT server environment variables
-HOSTNAME = socket.gethostname()
-IPADDRESS = socket.gethostbyname(HOSTNAME)
 TOPIC = "Restricted_zone_python"
-MQTT_HOST = IPADDRESS
+MQTT_HOST = os.getenv('MQTT_SERVER')
 MQTT_PORT = 1883
 MQTT_KEEPALIVE_INTERVAL = 60
 
