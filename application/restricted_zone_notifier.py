@@ -216,7 +216,8 @@ def main():
         else:
             input_stream = item['video']
 
-    cap = cv2.VideoCapture(input_stream)
+    os.environ["OPENCV_FFMPEG_CAPTURE_OPTIONS"] = "-hwaccel vaapi -hwaccel_device /dev/dri/renderD128 -hwaccel_output_format vaapi"
+    cap = cv2.VideoCapture(input_stream, cv2.CAP_FFMPEG)
     if not cap.isOpened():
         logger.error("ERROR! Unable to open video source")
         sys.exit(1)
